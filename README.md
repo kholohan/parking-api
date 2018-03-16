@@ -38,3 +38,9 @@ Or via docker, once an image has been built:
 Once the service is up and running, swagger documentation can be accessed at:
 
     $ http://localhost:8080/api/swagger.json
+    
+The following curl command is an example of how to test the api, once up and running.
+Please note that the rates.json file can be found under src/test/resources.
+
+    $ curl -X PUT -H "Content-Type: application/json" -T 'rates.json' 'http://localhost:8080/api/parking/rate?start=2015-07-01T07:00:00Z&end=2015-07-01T12:00:00Z'
+
