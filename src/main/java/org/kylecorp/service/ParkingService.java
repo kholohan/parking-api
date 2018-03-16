@@ -1,5 +1,6 @@
 package org.kylecorp.service;
 
+import org.jvnet.hk2.annotations.Service;
 import org.kylecorp.api.Rates;
 import org.kylecorp.util.TimeUtil;
 import org.kylecorp.util.exception.ParkingRuntimeException;
@@ -12,8 +13,7 @@ import java.time.DayOfWeek;
 import java.time.OffsetDateTime;
 import java.util.Optional;
 
-@Resource
-@ManagedBean
+@Service
 public class ParkingService {
 
     private static Logger logger = LoggerFactory.getLogger(ParkingService.class);

@@ -22,7 +22,6 @@ import java.time.OffsetDateTime;
 import java.util.Optional;
 
 @Resource
-@ManagedBean
 @Api(value = "/parking", description = "Parking API")
 @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 //@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
