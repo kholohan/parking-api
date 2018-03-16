@@ -1,7 +1,8 @@
 # Parking Api
 
 This project contains a RESTful service, which allows a user to enter a date time range and get back the rate at which
-they would be charged to park for that time span.
+they would be charged to park for that time span.  Project was limited to using
+Jetty, Jackson, Jersey and HK2.
 
 ## Requirements
 
@@ -29,6 +30,7 @@ This project can be run locally using:
     $ ./gradlew bootRun
 
 Or via docker, once an image has been built:
+    
     $ docker run -p 8080:8080 parking-app
 
 ## Further Documentation
