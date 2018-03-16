@@ -7,8 +7,6 @@ import org.kylecorp.util.exception.ParkingRuntimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.ManagedBean;
-import javax.annotation.Resource;
 import java.time.DayOfWeek;
 import java.time.OffsetDateTime;
 import java.util.Optional;

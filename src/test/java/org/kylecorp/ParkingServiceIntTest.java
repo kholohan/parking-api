@@ -2,11 +2,13 @@ package org.kylecorp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
+import org.jvnet.hk2.testing.junit.HK2Runner;
 import org.kylecorp.api.Rates;
 import org.kylecorp.service.ParkingService;
 import org.kylecorp.util.TimeUtil;
 import org.kylecorp.util.exception.ParkingRuntimeException;
 
+import javax.inject.Inject;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.OffsetDateTime;
@@ -15,9 +17,11 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 
-public class ParkingServiceIntTest {
+public class ParkingServiceIntTest extends HK2Runner {
 
-    private ParkingService parkingService = new ParkingService();
+    @Inject
+    private ParkingService parkingService;
+
     private Rates rates1;
     private Rates rates2;
 
@@ -41,13 +45,6 @@ public class ParkingServiceIntTest {
     }
 
 
-    /*
-
-     to  should yield 1500
-2015-07-04T07:00:00Z to 2015-07-04T12:00:00Z should yield 2000
-2015-07-04T07:00:00Z to 2015-07-04T20:00:00Z should yield unavailable
-
-     */
     @Test
     public void testSuccessful() {
         OffsetDateTime startDateTime = TimeUtil.parseDateTime("2015-07-01T07:00:00Z");

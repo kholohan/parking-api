@@ -9,7 +9,6 @@ import org.kylecorp.service.ParkingService;
 import org.kylecorp.util.TimeUtil;
 import org.kylecorp.util.exception.ParkingRuntimeException;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -28,10 +27,12 @@ import java.util.Optional;
 @Path("/parking")
 public class ParkingResource {
 
-    @Inject
+
     private ParkingService parkingService;
 
-    public ParkingResource() {
+    @Inject
+    public ParkingResource(ParkingService parkingService) {
+        this.parkingService = parkingService;
     }
 
     @ApiOperation(value = "Gets the parking rate for a given range of time", response = Response.class)

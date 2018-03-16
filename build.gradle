@@ -46,6 +46,7 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile 'org.mockito:mockito-core:2.7.22'
+    testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-jetty', version: '2.26'
     testCompile group: 'org.glassfish.hk2', name: 'hk2-junitrunner', version: '2.4.0'
 
 }
