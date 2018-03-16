@@ -1,9 +1,9 @@
-#Parking Api
+# Parking Api
 
 This project contains a RESTful service, which allows a user to enter a date time range and get back the rate at which
 they would be charged to park for that time span.
 
-##Requirements
+## Requirements
 
 This project requires the following:
 
@@ -12,7 +12,7 @@ This project requires the following:
 * Docker & Docker Compose
 * An IDE such as IntelliJ or Eclipse
 
-##Building
+## Building
 
 The project uses Gradle, so run:
 
@@ -22,7 +22,7 @@ After building, can construct a docker image:
 
     $ docker build -t parking-app .
 
-##Running
+## Running
 
 This project can be run locally using:
 
@@ -31,4 +31,8 @@ This project can be run locally using:
 Or via docker, once an image has been built:
     $ docker run -p 8080:8080 parking-app
 
-API Documentation available at http://localhost:8080/api/swagger.json
+## Further Documentation
+
+Once the service is up and running, swagger documentation can be accessed at:
+
+    $ http://localhost:8080/api/swagger.json
