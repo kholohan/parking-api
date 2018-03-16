@@ -11,29 +11,8 @@ import org.kylecorp.resource.ParkingResource;
 public class JerseyConfiguration extends ResourceConfig {
 
     public JerseyConfiguration() {
-        this.configureSwagger();
-        this.registerEndpoints();
-
-        packages("org.kylecorp.resource");
-        packages("io.swagger.jaxrs.listing");
-    }
-
-
-    private void registerEndpoints(){
-        this.register(ParkingResource.class);
-        this.register(WadlResource.class);
-    }
-
-    private void configureSwagger() {
-        this.register(ApiListingResource.class);
-        this.register(SwaggerSerializers.class);
-        BeanConfig config = new BeanConfig();
-        config.setTitle("Parking Service RESTful Documentation");
-        config.setVersion("v1");
-        config.setBasePath("/");
-        config.setResourcePackage("com.kylecorp.resource");
-        config.setPrettyPrint(true);
-        config.setScan(true);
-        // http://localhost:9090/v1/swagger.json
+        super();
+        register(new ApplicationBinder());
+        packages("org.kylecorp");
     }
 }

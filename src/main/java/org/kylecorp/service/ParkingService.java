@@ -7,11 +7,16 @@ import org.kylecorp.util.serialize.RatesDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.ManagedBean;
+import javax.annotation.Resource;
+import javax.inject.Named;
 import javax.ws.rs.core.MediaType;
 import java.time.DayOfWeek;
 import java.time.OffsetDateTime;
 import java.util.Optional;
 
+@Resource
+@ManagedBean
 public class ParkingService {
 
     private static Logger logger = LoggerFactory.getLogger(ParkingService.class);

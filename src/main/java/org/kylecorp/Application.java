@@ -1,7 +1,6 @@
 package org.kylecorp;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.fasterxml.jackson.jaxrs.xml.JacksonJaxbXMLProvider;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
@@ -16,7 +15,9 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
 import org.glassfish.jersey.server.ServerProperties;
 import org.glassfish.jersey.servlet.ServletContainer;
+import org.kylecorp.config.JerseyConfiguration;
 import org.kylecorp.resource.ParkingResource;
+import org.kylecorp.service.ParkingService;
 import org.kylecorp.util.exception.ParkingRuntimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,9 @@ public class Application {
         ServletContextHandler servletHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         servletHandler.setContextPath("/");
 
+        //ServletContainer servletContainer = new ServletContainer(new JerseyConfiguration());
+        //ServletHolder jerseyServlet = new ServletHolder(new ServletContainer(new JerseyConfiguration()));
+        //servletHandler.addServlet(jerseyServlet, "/*");
         ServletHolder jerseyServlet = servletHandler.addServlet(ServletContainer.class, "/api/*");
         jerseyServlet.setInitOrder(0);
 
@@ -40,6 +44,7 @@ public class Application {
                 ServerProperties.PROVIDER_CLASSNAMES,
                 new StringJoiner(",")
                         .add(ParkingResource.class.getCanonicalName())
+                        .add(ParkingService.class.getCanonicalName())
                         .add(ParkingRuntimeException.class.getCanonicalName())
                         //.add(JacksonJsonProvider.class.getCanonicalName())
                         .add(JacksonJaxbJsonProvider.class.getCanonicalName())
@@ -47,6 +52,7 @@ public class Application {
                         .add(ApiListingResource.class.getCanonicalName())
                         .add(SwaggerSerializers.class.getCanonicalName())
                         .toString());
+        jerseyServlet.setInitParameter("javax.ws.rs.Application", JerseyConfiguration.class.getName() );
 
 
         ResourceHandler staticHandler = new ResourceHandler();
