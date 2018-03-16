@@ -1,0 +1,55 @@
+.gradle
+classes
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+!editor/swagger-editor.war
+editor/target/
+db/
+out/
+### General Java Artifacts ###
+
+*.class
+*~
+.*.swp
+.*.swo
+git.properties
+*.log
+.DS_Store
+target/
+test-output
+classes/
+release.properties
+**/pom.xml.backup
+**/release.properties
+**/pom.xml.branch
+**/pom.xml.next
+**/pom.xml.releaseBackup
+**/pom.xml.tag
+atlassian-ide-plugin.xml
+
+### STS/Eclipse generated files ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.checkstyle
+.loadpath
+.settings/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.idea/
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
