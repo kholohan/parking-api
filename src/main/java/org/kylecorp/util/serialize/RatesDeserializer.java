@@ -5,11 +5,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
 import com.google.common.collect.Range;
-import io.swagger.util.Json;
 import org.kylecorp.api.RateInfo;
 import org.kylecorp.api.Rates;
 import org.slf4j.Logger;
@@ -20,11 +18,11 @@ import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class RatesDeserializer extends StdDeserializer<Rates>  {
+public class RatesDeserializer extends StdDeserializer<Rates> {
 
     private static Logger logger = LoggerFactory.getLogger(RatesDeserializer.class);
 
-    public RatesDeserializer(){
+    public RatesDeserializer() {
         this(null);
     }
 
@@ -71,7 +69,7 @@ public class RatesDeserializer extends StdDeserializer<Rates>  {
         return null;
     }
 
-    private Rates deserializeJson(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException{
+    private Rates deserializeJson(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         Rates rates = new Rates();
 
         HashMap<DayOfWeek, RateInfo> map = new HashMap<DayOfWeek, RateInfo>();
@@ -118,10 +116,9 @@ public class RatesDeserializer extends StdDeserializer<Rates>  {
         Rates rates = new Rates();
 
         //Handle JSON and XML, kind of hacky
-        if(jp instanceof FromXmlParser){//XML
+        if (jp instanceof FromXmlParser) {//XML
             rates = deserializeXml(jp, ctxt);
-        }
-        else//JSON
+        } else//JSON
         {
             rates = deserializeJson(jp, ctxt);
         }

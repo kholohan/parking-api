@@ -10,6 +10,8 @@ import java.util.Optional;
 @JsonDeserialize(using = RatesDeserializer.class)
 public class Rates {
 
+    HashMap<DayOfWeek, RateInfo> rates = new HashMap<DayOfWeek, RateInfo>();
+
     public HashMap<DayOfWeek, RateInfo> getRates() {
         return rates;
     }
@@ -18,16 +20,12 @@ public class Rates {
         this.rates = rates;
     }
 
-    HashMap<DayOfWeek, RateInfo> rates = new HashMap<DayOfWeek, RateInfo>();
-
-    public Optional<Integer> getRate(DayOfWeek dayOfWeek, Integer start, Integer stop){
+    public Optional<Integer> getRate(DayOfWeek dayOfWeek, Integer start, Integer stop) {
         RateInfo rateInfo = rates.get(dayOfWeek);
 
-        if(rateInfo != null){
+        if (rateInfo != null) {
             return rateInfo.getRate(start, stop);
-        }
-        else
-        {
+        } else {
             return Optional.empty();
         }
 

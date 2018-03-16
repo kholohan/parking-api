@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
-import org.glassfish.jersey.process.internal.RequestScoped;
 import org.kylecorp.api.Rates;
 import org.kylecorp.service.ParkingService;
 import org.kylecorp.util.TimeUtil;
@@ -13,16 +12,13 @@ import org.kylecorp.util.exception.ParkingRuntimeException;
 import javax.annotation.ManagedBean;
 import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.sql.Time;
-import java.text.ParseException;
 import java.time.OffsetDateTime;
-import java.time.format.DateTimeParseException;
-import java.util.List;
 import java.util.Optional;
 
 @Resource
@@ -48,7 +44,7 @@ public class ParkingResource {
         OffsetDateTime startDateTime = TimeUtil.parseDateTime(start);
         OffsetDateTime endDateTime = TimeUtil.parseDateTime(end);
 
-         Optional<Integer> rateOp = parkingService.getRate(startDateTime, endDateTime, rates);
+        Optional<Integer> rateOp = parkingService.getRate(startDateTime, endDateTime, rates);
 
         if (rateOp.isPresent()) {
             return Response.ok().entity(rateOp.get()).build();

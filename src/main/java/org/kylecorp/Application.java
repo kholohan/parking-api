@@ -52,7 +52,7 @@ public class Application {
                         .add(ApiListingResource.class.getCanonicalName())
                         .add(SwaggerSerializers.class.getCanonicalName())
                         .toString());
-        jerseyServlet.setInitParameter("javax.ws.rs.Application", JerseyConfiguration.class.getName() );
+        jerseyServlet.setInitParameter("javax.ws.rs.Application", JerseyConfiguration.class.getName());
 
 
         ResourceHandler staticHandler = new ResourceHandler();

@@ -1,23 +1,5 @@
 package org.kylecorp;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.kylecorp.api.Rates;
-import org.kylecorp.resource.ParkingResource;
-import org.kylecorp.service.ParkingService;
-import org.kylecorp.util.TimeUtil;
-import org.kylecorp.util.exception.ParkingRuntimeException;
-
-import javax.ws.rs.core.Response;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-
-import static org.junit.Assert.*;
-
 public class ParkingResourceIntTest {
     /*
 

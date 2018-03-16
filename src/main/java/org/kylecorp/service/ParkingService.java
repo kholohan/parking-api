@@ -3,14 +3,11 @@ package org.kylecorp.service;
 import org.kylecorp.api.Rates;
 import org.kylecorp.util.TimeUtil;
 import org.kylecorp.util.exception.ParkingRuntimeException;
-import org.kylecorp.util.serialize.RatesDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.Resource;
-import javax.inject.Named;
-import javax.ws.rs.core.MediaType;
 import java.time.DayOfWeek;
 import java.time.OffsetDateTime;
 import java.util.Optional;
@@ -21,7 +18,8 @@ public class ParkingService {
 
     private static Logger logger = LoggerFactory.getLogger(ParkingService.class);
 
-    public ParkingService() {}
+    public ParkingService() {
+    }
 
     private void validate(OffsetDateTime start, OffsetDateTime end) {
         if (!start.isBefore(end)) {
@@ -45,7 +43,7 @@ public class ParkingService {
 
         DayOfWeek dayOfWeek = start.getDayOfWeek();
         Optional<Integer> rateOp = rates.getRate(dayOfWeek, startInt, endInt);
-        if(!rateOp.isPresent()){
+        if (!rateOp.isPresent()) {
             logger.warn("No rate could be found for " + start + " and " + end);
         }
 

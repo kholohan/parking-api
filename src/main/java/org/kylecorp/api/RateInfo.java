@@ -18,9 +18,9 @@ public class RateInfo {
         return rangeRate;
     }
 
-    public Optional<Integer> getRate(Integer start, Integer end){
+    public Optional<Integer> getRate(Integer start, Integer end) {
         Optional<Map.Entry<Range, Integer>> val = rangeRate.entrySet().stream().filter(entry -> entry.getKey().containsAll(Arrays.asList(start, end))).findFirst();
-        if(val.isPresent()){
+        if (val.isPresent()) {
             return Optional.of(val.get().getValue());
         }
         return Optional.empty();

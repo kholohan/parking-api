@@ -13,13 +13,12 @@ public class TimeUtil {
     static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HHmm");
     private static Logger logger = LoggerFactory.getLogger(TimeUtil.class);
 
-    public static OffsetDateTime parseDateTime(String dateTime){
+    public static OffsetDateTime parseDateTime(String dateTime) {
         OffsetDateTime offsetDateTime;
 
-        try{
+        try {
             offsetDateTime = OffsetDateTime.parse(dateTime);
-        }
-        catch(DateTimeParseException e){
+        } catch (DateTimeParseException e) {
             throw new ParkingRuntimeException("Unable to parse date", e);
         }
 
